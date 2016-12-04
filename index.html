@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+    background: #1d2021;
+}
+
+* { box-sizing: border-box; }
+
+.deck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+  min-height: 100%;
+}
+
+.card {
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  color: #1d2021;
+  font-size: 15vh;
+  font-weight: bold;
+  width: 23%;
+  min-width: 200px;
+  height: 25vh;
+  margin: 30px 0;
+  background: #83a598;
+  display: flex;
+  cursor: pointer;
+}
+
+.fullscreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.5s;
+  opacity: 1;
+  background: #1d2021;
+  color: #1d2021;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 70vh;
+  transform: scale(1) rotateY(180deg);
+  cursor: pointer;
+}
+
+.visible {
+  transform: scale(1) rotateY(0);
+  color: #83a598;
+}
+
+.hidden {
+  opacity: 0;
+  transform: scale(0) rotateY(180deg);
+}
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <div class="card">0</div>
+    <div class="card">½</div>
+    <div class="card">1</div>
+    <div class="card">2</div>
+    <div class="card">3</div>
+    <div class="card">5</div>
+    <div class="card">8</div>
+    <div class="card">13</div>
+    <div class="card">20</div>
+    <div class="card">40</div>
+    <div class="card">100</div>
+  </div>
+
+  <div class="fullscreen hidden"></div>
+
+  <script>
+var $ = document.querySelector.bind(document)
+  var fs = $('.fullscreen')
+$('.deck').addEventListener('click', function (e) {
+  var el = e.target
+  if (!el.classList.contains('card')) return
+  fs.innerHTML = el.innerHTML
+  fs.classList.remove('hidden')
+})
+
+fs.addEventListener('click', function (e) {
+  if (!fs.classList.contains('visible')) {
+    fs.classList.add('visible')
+  } else {
+    fs.classList.remove('visible')
+    fs.classList.add('hidden')
+  }
+})
+  </script>
+</body>
+</html>
