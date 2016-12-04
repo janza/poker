@@ -99,6 +99,7 @@ $('.deck').addEventListener('click', function (e) {
   if (!el.classList.contains('card')) return
   fs.innerHTML = el.innerHTML
   fs.classList.remove('hidden')
+  e.preventDefault();
 })
 
 fs.addEventListener('click', function (e) {
@@ -108,6 +109,7 @@ fs.addEventListener('click', function (e) {
     fs.classList.remove('visible')
     fs.classList.add('hidden')
   }
+  e.preventDefault();
 })
   </script>
 </body>
